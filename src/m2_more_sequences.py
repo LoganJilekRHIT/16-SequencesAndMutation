@@ -10,8 +10,8 @@ for ITERATING through SEQUENCES, including selections from:
   -- Looking at two sequences in parallel
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Logan Jilek.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -46,24 +46,28 @@ def run_test_shortest_string():
 
     expected = 'a'
     answer = shortest_string(sequence1)
-    print('Expected and actual are:', expected, answer)
+    print('Test 1')
+    print('Expected and actual are:', expected, ',', answer)
     if expected != answer:
         print('  Your answer is WRONG.')
 
     expected = 'we'
     answer = shortest_string(sequence2)
-    print('Expected and actual are:', expected, answer)
+    print('Test 2')
+    print('Expected and actual are:', expected, ',', answer)
     if expected != answer:
         print('  Your answer is WRONG.')
 
     expected = 'is'
     answer = shortest_string(sequence3)
-    print('Expected and actual are:', expected, answer)
+    print('Test 3')
+    print('Expected and actual are:', expected, ',', answer)
     if expected != answer:
         print('  Your answer is WRONG.')
 
     expected = 'all we are saying is give peace a chance'
     answer = shortest_string(sequence4)
+    print('Test 4')
     print('Expected is:', expected)
     print('Actual is:  ', answer)
     if expected != answer:
@@ -71,7 +75,8 @@ def run_test_shortest_string():
 
     expected = ''
     answer = shortest_string(sequence5)
-    print('Expected and actual are:', expected, answer)
+    print('Test 5')
+    print('Expected and actual are:', expected, ',', answer)
     print('The expected and actual should both be the empty string.')
     if expected != answer:
         print('  Your answer is WRONG.')
@@ -103,9 +108,20 @@ def shortest_string(strings):
       :type strings: list[str]   or tuple(str)
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    # test = ['Hello', 'Howdy Partner']
+    # print(len(test[1]))
+
+    hold = strings[0]
+    for k in range(len(strings)):
+        if len(strings[k]) < len(hold):
+            hold = strings[k]
+        elif len(strings[k]) == hold:
+            if strings[k] < hold:
+                hold = strings[k]
+    return hold
 
 
 def run_test_index_of_largest_number():
@@ -180,15 +196,22 @@ def index_of_largest_number(numbers, n):
 
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
-
-
+    hold = numbers[0]
+    index = 0
+    for k in range(n):
+        if numbers[k] > hold:
+            hold = numbers[k]
+            index = k
+    return index
 # ----------------------------------------------------------------------
 # Some problems iterate (loop) through the sequence accessing TWO
 # (or more) places in the sequence AT THE SAME ITERATION, like these:
 # ----------------------------------------------------------------------
+
+
 def run_test_number_of_stutters():
     """ Tests the   number_of_stutters   function. """
     print()
@@ -235,9 +258,14 @@ def number_of_stutters(s):
        :type s: str
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # Done: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    repeat = 0
+    for k in range(len(s) - 1):
+        if s[k] == s[k-1]:
+            repeat = repeat + 1
+    return repeat
 
 
 def run_test_is_palindrome():
@@ -308,7 +336,7 @@ def is_palindrome(s):
       :type s: str
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
@@ -317,6 +345,13 @@ def is_palindrome(s):
     #   above are particularly good examples to work by hand.
     ####################################################################
     # ------------------------------------------------------------------
+    reverse = ''
+    for k in range(len(s) - 1, -1, -1):
+        reverse = reverse + s[k]
+    if reverse == s:
+        return True
+    else:
+        return False
 
 
 # ----------------------------------------------------------------------
@@ -375,9 +410,14 @@ def count_same(sequence1, sequence2):
       type: sequence2: tuple or list or string
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # Done: 6. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    index = 0
+    for k in range(len(sequence1)):
+        if sequence1[k] == sequence2[k]:
+            index = index + 1
+    return index
 
 
 # ----------------------------------------------------------------------
